@@ -1,4 +1,5 @@
 #! /bin/bash
+#works only if figlet and cowsay are installed
 
 echo "what is your name?"
 
