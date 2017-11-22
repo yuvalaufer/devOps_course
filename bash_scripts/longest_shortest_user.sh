@@ -10,3 +10,4 @@ done
 
 #cat /etc/passwd |awk -F: '{print }' |awk 'FNR==5'
 #cat /etc/passwd |awk -F: '{print }' |wc -l
+#test 3 -ge 6 && echo var1 is larger || echo var2 is larger 
