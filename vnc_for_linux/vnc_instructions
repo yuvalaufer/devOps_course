@@ -1,0 +1,5 @@
+1. install the following rpms for vnc: (if you have epl yum repository you can use "yum install vnc")
+	tigervnc-server-1.0.90-0.17.20110314svn4359.el6.x86_64
+	tigervnc-1.0.90-0.17.20110314svn4359.el6.x86_64
+2. configure the file /etc/sysconfig/vncservers (create one if it is not created automatically)
+3. stop and start vncserver service
