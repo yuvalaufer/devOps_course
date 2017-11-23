@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 cat /etc/passwd |awk -F: '{print $1}' > user_list
 usercount=$(cat user_list | wc -l)
@@ -43,6 +43,8 @@ longest_user
 echo """
 the shortest username/usernames in the system:"""
 shortest_user "$usercount"
+
+rm -f user_list
 
 #end of script
 
