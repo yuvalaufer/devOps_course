@@ -14,9 +14,8 @@ done
 
 function shortest_user () {
 sindex=0
-usernum=$1
 short_list[$sindex]=$(awk 'NR == 1' user_list)
-for ((i=2;i<=$usernum;i++)); do
+for ((i=2;i<=$usercount;i++)); do
 	cur_user=$(awk -v n=$i 'NR == n' user_list)
 	if [ "$(echo "$cur_user" |wc -L)" -lt "$(echo "${short_list[$sindex]}" |wc -L)" ];then 
 		short_list=()
@@ -31,7 +30,6 @@ done
 for ((i=0;i<=$sindex;i++)); do
 	echo "${short_list[$i]}"
 done
-#echo "${short_list[@]}"
 }
 
 echo """
@@ -40,7 +38,7 @@ longest_user
 
 echo """
 the shortest username/usernames in the system:"""
-shortest_user "$usercount"
+shortest_user
 
 rm -f user_list
 
