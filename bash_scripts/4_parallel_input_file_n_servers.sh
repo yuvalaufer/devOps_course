@@ -25,20 +25,25 @@ if [ "$(which sshpass |wc -l)" == "0" ]; then
 	exit 1
 fi
 
-echo """
-before you start please verify that you have prepaired the input file.
-input file should look like this:
-<first server ip>	<first server's username you want to send command to> <password to that username>
-<second server ip>	<second server's username you want to send command to> <password to that username>
-etc.. 
-e.g.:
-192.168.137.129	user1	user1pass
-192.168.137.130	user3	user3pass
+FILE1=$1
+comm1=$2
 
-***  enter full path to the input file. if you don't have one , enter 0. script will exit and you'll have to run it again after you prepare 
-	your input file.
-"""
-read FILE1
+if [ -z $FILE1 ]; then
+	echo """
+	before you start please verify that you have prepaired the input file.
+	input file should look like this:
+	<first server ip>	<first server's username you want to send command to> <password to that username>
+	<second server ip>	<second server's username you want to send command to> <password to that username>
+	etc.. 
+	e.g.:
+	192.168.137.129	user1	user1pass
+	192.168.137.130	user3	user3pass
+
+	***  enter full path to the input file. if you don't have one , enter 0. script will exit and you'll have to run it again after you prepare 
+		your input file.
+	"""
+	read FILE1
+fi
 
 if [ "$FILE1" == "0" ]; then
 	exit 1
@@ -64,8 +69,10 @@ for ((i=1;i<=$servernum;i++)); do
 done
 FILE1=TEMPFILE
 
-echo "what is the command you want to send?"
-read comm1
+if [ -z $comm1 ]; then
+	echo "what is the command you want to send?"
+	read comm1
+fi
 
 function send_command () {
 i=$1
@@ -87,4 +94,3 @@ wait
 /bin/rm -f TEMPFILE
 
 #end of script
-
