@@ -23,3 +23,25 @@ script gets from the user a list of ips' and a command and send the command in p
 parallel_input_file_n_servers.sh:
 same action , but here script gets the list from input file
 
+5. log_n_parse.sh:
+
+	a. First of all, write a function which logs whatever comes after the log function execution into a log and adds (to the log) date and time for each command executed, in addition to that, also send the output of the commands in the script to the screen.
+
+Example:
+
+"log ls -l" should print the output to screen and in addition to add the output to the log file including date and time in the line of the command.
+
+A line in the logfile should look like so:
+
+[2017-12-13T10:51:11.000]: ls -l
+
++ output of the above command
+
+
+
+	b. Download the attached file and parse it.
+
+Find all security group id's in the attached file, security group id looks like: "sg-d143acbe", and for each security group find all the related Private Ip addresses.
+
+The output of both ls -l and the parsing of the Private Ip's should go both to screen and to the log.
+
