@@ -1,8 +1,15 @@
 #!/bin/bash
 
 if [ "$(rpm -qa |grep -i sshpass |wc -l)" == "0" ]; then
-	yum install sshpass -y
+	yum install sshpass -y >> yum.log 2>yum.err
 	wait
+	rm -f yum.log yum.err
+	echo " "
+fi
+
+if [ "$(rpm -qa |grep -i sshpass |wc -l)" == "0" ]; then
+	echo "sshpass couldn't be installed. please install manually before running the script again. script failed."
+	exit 1
 fi
 
 echo "to how many servers you want to send the command?"
