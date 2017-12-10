@@ -15,5 +15,9 @@ gets a number from the user and prints whether the number is prime or not
 pints the longest and shortest user name/s in the server
 
 
-4_parallel_command.sh:
+4_parallel_command_2_servers.sh:
+script gets from the user 2 ips' and a command and send the command in parallel to both servers. 
+
+
+parallel_command_n_servers.sh:
 script gets from the user a list of ips' and a command and send the command in parallel to all these servers. 

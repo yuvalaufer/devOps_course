@@ -9,6 +9,10 @@ sindex=0
 for ((i=0;i<2;i++)); do
 	echo "enter ip address for server no. $(expr $i + 1)"
 	read serverip
+	while [ "$(ping -c 1 $serverip |grep "1 received" |wc -l)" == "0" ]; do
+		echo "$serverip is not alive or not valid. please check your ip and enter again"
+		read serverip
+	done
 	echo "enter username for server no. $(expr $i + 1)"
 	read user
 	echo "enter password for server no. $(expr $i + 1)"
@@ -24,6 +28,7 @@ read comm1
 
 function send_command () {
 index1=$1
+echo " "
 sshpass -p "${pass_arr[$index1]}" ssh -o StrictHostKeyChecking=no "${user_arr[$index1]}"@"${serverips[$index1]}" "$comm1"
 }
 
