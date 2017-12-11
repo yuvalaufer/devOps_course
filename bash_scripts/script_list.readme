@@ -1,10 +1,11 @@
+
 this is a list of all bash scripts I had to create during the devops course:
 ----------------------------------------------------------------------------
 
 1_script_15.11.sh:
 
 script gets a name and age from the user and prints the name and age that was given , and also:
-	how much time the server is up , what is the date , how many files are there under /home directory.
+        how much time the server is up , what is the date , how many files are there under /home directory.
 
 
 2_prime_numbers_21-11.sh:
@@ -15,9 +16,10 @@ gets a number from the user and prints whether the number is prime or not
 pints the longest and shortest user name/s in the server
 
 
-4_parallel_command_2_servers.sh:
-script gets from the user 2 ips' and a command and send the command in parallel to both servers. 
-
-
+4.
 parallel_command_n_servers.sh:
-script gets from the user a list of ips' and a command and send the command in parallel to all these servers. 
+script gets from the user a list of ips' and a command and send the command in parallel to all these servers.
+
+parallel_input_file_n_servers.sh:
+same action , but here script gets the list from input file
+

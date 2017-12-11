@@ -1,14 +1,28 @@
 #!/bin/bash
 
-if [ "$(rpm -qa |grep -i sshpass |wc -l)" == "0" ]; then
-	yum install sshpass -y >> yum.log 2>yum.err
+if [ "$(whoami)" != "root" ]; then
+	echo """you must be in user root to execute this script.
+			su to root user and run again. """
+	exit 1
+fi
+
+if [ "$(which sshpass |wc -l)" == "0" ]; then
+	if [ "$(which yum |wc -l)" != "0" ]; then
+		yum install sshpass -y >/dev/null 2>/dev/null
+		echo "installing sshpass.."
+	elif [ "$(which apt-get |wc -l)" != "0" ]; then
+		apt-get install sshpass >/dev/null 2</dev/null
+		echo "installing sshpass.."
+	else
+		echo """ unknown installation manager. (no yum and no apt-get).
+				please install sshpass manually and run the script again. """
+	fi
 	wait
-	rm -f yum.log yum.err
 	echo " "
 fi
 
-if [ "$(rpm -qa |grep -i sshpass |wc -l)" == "0" ]; then
-	echo "sshpass couldn't be installed. please install manually before running the script again. script failed."
+if [ "$(which sshpass |wc -l)" == "0" ]; then
+	echo " sshpass couldn't be installed. please install manually before running the script again. script failed."
 	exit 1
 fi
 
@@ -54,3 +68,4 @@ done
 eval "${comm_arr[@]}"
 
 #end of script
+
