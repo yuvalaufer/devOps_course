@@ -1,0 +1,13 @@
+yum
+---
+if you want to check if a pkg belong to your yum repository you can check it with:
+yum search
+
+
+pip
+----
+python-pip is an installation manager for python related pkgs.
+
+after python-pip is installed you can install pakages using:
+
+pip install
