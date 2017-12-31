@@ -3,6 +3,11 @@ if [ "$(whoami)" != "root" ]; then
 	echo "please run from root user"
 	exit 1
 fi
+if [ "$(which yum |wc -l)" == "0" ]; then
+	echo "this is not a yum based installation manager. exiting script."
+	exit 1
+fi
+
 yum install java-1.8.0-openjdk.x86_64 -y
 wait
 if [ "$(which wget |wc -l)" == "0" ]; then
