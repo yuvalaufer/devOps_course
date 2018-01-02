@@ -1,0 +1,14 @@
+  node {
+        stage('checkout') { 
+    
+                       checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+     userRemoteConfigs: [[url: 'https://github.com/geek-kb/scripts.git']]])
+            }
+
+        stage('build'){
+                sh 'ls -R |wc -l'
+        }
+        stage('end') {
+                sh 'ls -Rl'
+        }
+   }
