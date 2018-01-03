@@ -8,6 +8,13 @@ if [ "$(which yum |wc -l)" == "0" ]; then
 	exit 1
 fi
 
+if [ "$(rpm -qa |grep openjdk |wc -l)" != "0" ]; then
+	if [ "$(rpm -qa |grep openjdk |grep 1.8)" == "0" ]; then
+		yum remove java-*-openjdk* -y
+	fi
+fi
+wait
+
 yum install java-1.8.0-openjdk.x86_64 -y
 wait
 if [ "$(which wget |wc -l)" == "0" ]; then
@@ -24,3 +31,4 @@ firewall-cmd --reload
 wait
 systemctl start jenkins
 systemctl enable jenkins
+rpm -qa |grep openjdk |grep 1.8 |wc -l
