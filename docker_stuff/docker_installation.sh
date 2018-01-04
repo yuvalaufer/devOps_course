@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$(whoami)" != "root" ]; then
+	echo "please run from user root"
+	exit 1
+fi
 
 if [ "$(rpm -qa |grep docker |wc -l)" != "0" ]; then 
 	echo "removing old docker version"
