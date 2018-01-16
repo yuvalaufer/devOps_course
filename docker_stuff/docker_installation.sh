@@ -26,17 +26,12 @@ curl -L https://github.com/docker/machine/releases/download/v0.13.0/docker-machi
 chmod +x /tmp/docker-machine
 cp /tmp/docker-machine /usr/local/bin/docker-machine
 docker-machine version
-if [ ! -z "$?" ]; then
-	echo "docker-machine wasn't installed correctly please install manually"
-fi
 
 echo """###########################
 installing docker-compose
 ###########################"""
 sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose; wait
-
-if [ ! -z "$?" ]; then
-	echo "docker-compose wasn't installed correctly please install manually"
-fi
+chmod +x /usr/local/bin/docker-compose 
+docker-compose version
 
 end of script
