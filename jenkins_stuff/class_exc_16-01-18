@@ -1,0 +1,5 @@
+1.
+configure a github organization build on jenkins , which scans you git repository and creates a new build every git push
+
+important note: 
+repository must contan a valid jenkins pipeline configuration file called "Jenkinsfile" in order to understand what to do
