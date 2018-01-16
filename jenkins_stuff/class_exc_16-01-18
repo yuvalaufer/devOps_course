@@ -1,5 +1,13 @@
 1.
+use itai's jenkins for it.
+address:
+
+jenkins.lel.bz
+user: yuval
+pass: Aa123456!
 configure a github organization build on jenkins , which scans you git repository and creates a new build every git push
 
 important note: 
 repository must contan a valid jenkins pipeline configuration file called "Jenkinsfile" in order to understand what to do
+
+2. in order for it to work need to define a webhook in the git repository settings
