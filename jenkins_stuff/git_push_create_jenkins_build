@@ -12,6 +12,8 @@ important notes:
 
 *   in order for it to work need to define a webhook in the git repository settings
 
+in order for webhook to work I've configured my router to forward incoming traffic in port 8080 to port 8080 on local ip addrss on virtual server.
+
 
 2.
 configure a jenkins slave on your aws server
