@@ -25,10 +25,8 @@ wait
 rpm -import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key
 yum install jenkins -y
 wait
-firewall-cmd --zone=public --add-port=8080/tcp --permanent
-firewall-cmd --zone=public --add-service=http --permanent
-firewall-cmd --reload
+which firewall-cmd
+test "$?" -eq "0" && (firewall-cmd --zone=public --add-port=8080/tcp --permanent) && (firewall-cmd --zone=public --add-service=http --permanent) && (firewall-cmd --reload)
 wait
-systemctl start jenkins
-systemctl enable jenkins
-rpm -qa |grep openjdk |grep 1.8 |wc -l
+service start jenkins
+chkconfig jenkins on
