@@ -1,0 +1,15 @@
+problem: while creating a container on centos 7 we get the following error:
+
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+
+as a result docker container cannon ping or use yum/apt-get or any other network usage 
+
+
+solution:
+
+1. add the following: net.ipv4.ip_forward=1
+   in: /etc/sysctl.conf
+
+2. service network restart
+
+3. type: sysctl net.ipv4.ip_forward=1
