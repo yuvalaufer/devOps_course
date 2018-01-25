@@ -7,10 +7,10 @@ sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 wait
 sudo yum -y install puppetserver
 wait
-test "$(free -m |grep Mem |awk '{print $2}')" -le "2024" && sed -i 's/JAVA_ARGS="*".*/JAVA_ARGS="-Xms256m -Xmx256m -XX:MaxPermSize=256m"/g' /etc/sysconfig/puppetserver
-systemctl start puppetserver
+test "$(free -m |grep Mem |awk '{print $2}')" -le "2024" && sudo sed -i 's/JAVA_ARGS="*".*/JAVA_ARGS="-Xms256m -Xmx256m -XX:MaxPermSize=256m"/g' /etc/sysconfig/puppetserver
+sudo systemctl start puppetserver
 wait
-systemctl enable puppetserver
+sudo systemctl enable puppetserver
 echo """finished installation of puppet master.
 """
 }
