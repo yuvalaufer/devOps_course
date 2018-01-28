@@ -6,10 +6,17 @@ echo "running puppet master installation............"
 sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 wait
 sudo yum -y install puppetserver
+echo "puppet server is installed"
 wait
 test "$(free -m |grep Mem |awk '{print $2}')" -le "2024" && sudo sed -i 's/JAVA_ARGS="*".*/JAVA_ARGS="-Xms256m -Xmx256m -XX:MaxPermSize=256m"/g' /etc/sysconfig/puppetserver
+echo "starting puppetserver service......."
 sudo systemctl start puppetserver
 wait
+if [ "$(grep "Puppet Server has successfully started" /var/log/puppetlabs/puppetserver/puppetserver.log |wc -l)" != "0" ]; then
+	echo "Puppetserver was started successfully"
+else
+	echo "Puppetserver failed to start. please check /var/log/puppetlabs/puppetserver/puppetserver.log file.."
+fi
 sudo systemctl enable puppetserver
 echo """finished installation of puppet master.
 """
