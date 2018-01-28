@@ -1,0 +1,12 @@
+in case hostname of puppet master is not "puppet" need to add the following configuration to puppet.conf of the puppet master:
+
+[main]
+dns_alt_names = < all puppet server aliases seperated by commas >
+
+
+e.g:
+
+[main]
+dns_alt_names = puppetmaster1 , puppetmaster1.my-domain.com
+
+
