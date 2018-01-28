@@ -1,6 +1,21 @@
 #! /bin/bash
 install_type=$1
 
+if [ "$(whoami |grep root |wc -l)" == "0" ]; then
+echo """ 
+was this script ran with sudo permissions? y/n
+
+(script contain sudo permissions in order to succeed)
+
+type 'y'(yes)  or 'n' (no).
+"""
+read -r sudocheck
+	if [ "$sudocheck" != "y" ]; then
+		echo "please run script again with sudo"
+		exit 1
+	fi
+fi
+
 function install_master {
 echo "running puppet master installation............"
 sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
@@ -18,6 +33,7 @@ else
 	echo "Puppetserver failed to start. please check /var/log/puppetlabs/puppetserver/puppetserver.log file.."
 fi
 sudo systemctl enable puppetserver
+sudo iptables -I INPUT -p tcp -m tcp --dport 8140 -j ACCEPT
 echo """finished installation of puppet master.
 """
 }
