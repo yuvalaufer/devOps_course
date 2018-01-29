@@ -2,18 +2,8 @@
 install_type=$1
 
 if [ "$(whoami |grep root |wc -l)" == "0" ]; then
-echo """ 
-was this script ran with sudo permissions? y/n
-
-(script contain sudo permissions in order to succeed)
-
-type 'y'(yes)  or 'n' (no).
-"""
-read -r sudocheck
-	if [ "$sudocheck" != "y" ]; then
-		echo "please run script again with sudo"
+		echo "please run script again with sudo or from user root"
 		exit 1
-	fi
 fi
 
 function install_master {
@@ -33,7 +23,12 @@ else
 	echo "Puppetserver failed to start. please check /var/log/puppetlabs/puppetserver/puppetserver.log file.."
 fi
 sudo systemctl enable puppetserver
-sudo iptables -I INPUT -p tcp -m tcp --dport 8140 -j ACCEPT
+if [ "$(which firewall-cmd |wc -l)" != "0" ]; then
+	sudo firewall-cmd --zone=public --add-port=8140/tcp --permanent
+else
+	sudo iptables -I INPUT -p tcp -m tcp --dport 8140 -j ACCEPT
+	service iptables restart
+fi
 echo """finished installation of puppet master.
 """
 }
