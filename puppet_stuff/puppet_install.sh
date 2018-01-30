@@ -25,7 +25,7 @@ fi
 sudo systemctl enable puppetserver
 if [ "$(which firewall-cmd |wc -l)" != "0" ]; then
 	sudo firewall-cmd --zone=public --add-port=8140/tcp --permanent
-elif [ $("which iptables |wc -l)" != "0" ]; then
+elif [ "$(which iptables |wc -l)" != "0" ]; then
 	sudo iptables -I INPUT -p tcp -m tcp --dport 8140 -j ACCEPT
 	service iptables restart
 fi
