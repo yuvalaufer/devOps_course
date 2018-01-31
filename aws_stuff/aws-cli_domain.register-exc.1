@@ -1,0 +1,27 @@
+class exc.:
+
+1. create a hosted zone (a domain which will used for your ec2)
+
+2. use aws cli to register your puppet server and puppet agent in the domain
+
+
+solution: 
+
+1. create json files with the needed fields to update. 
+you can find the json configuration in the suitable help. in this case:
+aws route53 help (since route53 is the dns service of the aws) --> we'll get list of options. in this case we will choose "change-resource-record-sets". now we'll use the help to 
+take the json file and find out how to configure the file: 
+aws route53 change-resource-record-sets help
+
+2. create a json file that match the configuration to apply.
+in this case I put them in the aws-files directory.
+I've created 1 file for the puppetserver and one for the puppetclient.
+
+3. load the configuration to the aws using the json files from step2:
+
+aws route53 change-resource-record-sets --hosted-zone-id Z3IIDUTU68XZD4 --change-batch file:///root/aws-files/route53-add-puppetmaster.json
+
+* hosted zone ID is taken from the aws (it is the id of the domain I created
+
+
+write outcome of the exc - there is a ping from each of the servers to the other using the fqdn hostname without having the need to write each on other's /etc/hosts.
