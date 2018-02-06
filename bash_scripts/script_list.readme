@@ -45,3 +45,6 @@ Find all security group id's in the attached file, security group id looks like:
 
 The output of both ls -l and the parsing of the Private Ip's should go both to screen and to the log.
 
+6. bucket_script.sh
+
+script will use aws cli to create s3 bucket on your aws account and upload a file to the bucket
