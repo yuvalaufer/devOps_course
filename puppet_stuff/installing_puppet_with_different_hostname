@@ -3,9 +3,20 @@ in case hostname of puppet master is not "puppet" need to add the following conf
 [main]
 server = <puppet server hostname with fqdn >
 
-
 e.g:
 
 [main]
+server = puppetmaster.yuval.private
+
+
+
+also, configure the following in the puppet.conf of the puppet client:
+
+[agent]
+server = <puppet server hostname with fqdn >
+
+e.g:
+
+[agent]
 server = puppetmaster.yuval.private
 
