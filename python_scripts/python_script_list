@@ -1,0 +1,4 @@
+1 add_last.py
+
+a fuction that will get a list and append the last element in the list.
+e.g. if we send this list: [1,2,3] the function will change it to: [1,2,3,3]
