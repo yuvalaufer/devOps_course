@@ -2,3 +2,11 @@
 
 a fuction that will get a list and append the last element in the list.
 e.g. if we send this list: [1,2,3] the function will change it to: [1,2,3,3]
+
+
+2 2_hw-27-2.py
+
+write 3 functions:
+a. gets 2 numbers and check which is the largest
+b. gets 2 strings and append the second to the first
+c. gets a string and counts how many words are in the string.
