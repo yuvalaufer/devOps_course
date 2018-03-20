@@ -1,0 +1,2 @@
+[local]
+ansibleu ansible_connection=local
