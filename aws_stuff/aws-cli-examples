@@ -1,10 +1,13 @@
 1. creating ec2 instance
-aws ec2 run-instances --region "us-east-1" --image-id ami-1853ac65 --count 1 --instance-type t2.micro --key-name aws-devops-N-Virginia --security-group-ids final-proj
+aws ec2 run-instances --region "us-east-1" --image-id ami-1853ac65 --count 1 --instance-type t2.micro --key-name aws-devops-N-Virginia --security-group-ids sg-067171387fdae87b2
 
 
 2. display only ec2 instances with a certion security group (need to take sg id from the aws. in this example - sg id is: sg-067171387fdae87b2)
 
-aws ec2 describe-instances --filters "Name=instance.group-id,Values=sg-067171387fdae87b2"
+	aws ec2 describe-instances --filters "Name=instance.group-id,Values=sg-067171387fdae87b2"
+
+3. display only ec2 instances with the sg mentioned in step3 , and with instnace state "running" :
+aws ec2 describe-instances --filters "Name=instance.group-id,Values=sg-067171387fdae87b2 , Name=instance-state-name,Values=running"
 
 
 
