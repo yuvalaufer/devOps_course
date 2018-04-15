@@ -1,0 +1,20 @@
+---
+- hosts: servers
+  become_user: root
+  become: yes
+  tasks:
+  - name: install ntp 
+    yum: name=ntp state=latest
+
+  - name: copy ntp conf to destenation
+  - copy:
+      src: /etc/ntp.conf
+      dest: /etc/ntp.conf
+    notify: restart ntpd
+ 
+  - name: start ntp service
+    service: name=ntpd state=started
+    
+  handlers:
+  - name: restart ntpd
+    service: name=ntpd state=restarted
