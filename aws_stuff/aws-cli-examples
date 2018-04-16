@@ -10,4 +10,8 @@ aws ec2 run-instances --region "us-east-1" --image-id ami-1853ac65 --count 1 --i
 aws ec2 describe-instances --filters "Name=instance.group-id,Values=sg-067171387fdae87b2 , Name=instance-state-name,Values=running"
 
 
+4. create a pivate route53 hosted zone
+
+aws route53 create-hosted-zone --name "final-proj.com" --hosted-zone-config PrivateZone=true --caller-reference "final-proj-reff" --vpc VPCRegion="us-east-1",VPCId="vpc-233b1e5b"
+
 
