@@ -1,0 +1,5 @@
+[nodes]
+node.final-proj.private ansible_connection=ssh ansible_host=172.17.26.101
+[servers]
+#ansibleserver1	ansible_connection=local
+lin4ansible	ansible_connection=ssh ansible_host=192.168.48.140

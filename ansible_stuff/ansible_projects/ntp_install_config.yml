@@ -6,8 +6,8 @@
   - name: install ntp 
     yum: name=ntp state=latest
 
-  - name: copy ntp conf to destenation
-  - copy:
+  - name: copy ntp.conf to destenation
+    copy:
       src: /etc/ntp.conf
       dest: /etc/ntp.conf
     notify: restart ntpd
