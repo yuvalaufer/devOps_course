@@ -28,5 +28,5 @@ wait
 which firewall-cmd
 test "$?" -eq "0" && (firewall-cmd --zone=public --add-port=8080/tcp --permanent) && (firewall-cmd --zone=public --add-service=http --permanent) && (firewall-cmd --reload)
 wait
-service start jenkins
+service jenkins start
 chkconfig jenkins on
