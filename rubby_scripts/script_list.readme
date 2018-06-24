@@ -1,0 +1,7 @@
+
+this is a list of my ruby learning scripts
+----------------------------------------------------------------------------
+
+1_duffyduck_it.rb:
+script takes a strung from user and changes all "s" to "th" if it is pronounced as "s" - which means if it isn't followed by 'h'.
+script also changes the "c" to "th" if it is pronounced as "s" (in case c is followed by: e,i,or y)
