@@ -1,0 +1,21 @@
+
+puts "Enter a phrase you'd like to analyze: "
+text = gets.chomp
+
+words = text.split
+
+frequencies = Hash.new(0) #starting a new empty hash
+
+words.each { |word| frequencies[word] += 1 } #counting each uniq word
+
+frequencies = frequencies.sort_by do |word, count| #sorting word's frequencies by using the sort_by method on the count 
+  count
+end
+
+frequencies.reverse! # order from the most frequent to the less
+
+frequencies.each do |first, last|  #print the sorted list of words with their frequency , from the most to the less
+    puts "#{first} #{last}"
+end
+
+
